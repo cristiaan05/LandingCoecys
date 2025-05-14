@@ -3,33 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Landing Congreso</title>
+  <title>Congreso COECYS 2025</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Custom styles */
+    /* Colores personalizados */
+    :root {
+      --bs-primary: #F37F00; /* Naranja */
+      --bs-secondary: #003366; /* Azul oscuro */
+    }
+    .navbar, .footer {
+      background-color: var(--bs-secondary);
+    }
+    .navbar-brand img {
+      height: 50px;
+    }
     .hero {
-      background: url('https://source.unsplash.com/1600x900/?conference') center/cover no-repeat;
+      background: linear-gradient(rgba(0, 51, 102, 0.6), rgba(243, 127, 0, 0.6)), url('https://source.unsplash.com/1600x900/?conference') center/cover no-repeat;
       color: #fff;
       padding: 8rem 0;
       text-shadow: 0 2px 8px rgba(0,0,0,0.7);
     }
     .feature-icon {
       font-size: 3rem;
-      color: #0d6efd;
+      color: var(--bs-primary);
     }
     .btn-primary {
+      background-color: var(--bs-primary);
+      border-color: var(--bs-primary);
       border-radius: 50px;
       padding: 0.75rem 2rem;
+    }
+    .list-group-item {
+      border-left: 4px solid var(--bs-primary);
+    }
+    .footer p, .footer a {
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Congreso 2025</a>
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/logo.png" alt="Logo COECYS 2025"> <!-- Logo en carpeta assets -->
+        <span class="ms-2 fw-bold">COECYS 2025</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,7 +68,7 @@
   <!-- Hero -->
   <section class="hero text-center">
     <div class="container">
-      <h1 class="display-4 fw-bold">Congreso Internacional 2025</h1>
+      <h1 class="display-4 fw-bold">Congreso Internacional</h1>
       <p class="lead mb-4">Innovación, Tecnología y Futuro</p>
       <a href="#register" class="btn btn-primary btn-lg">Regístrate Ahora</a>
     </div>
@@ -58,21 +79,21 @@
     <div class="container">
       <div class="row text-center g-4">
         <div class="col-md-4">
-          <div class="p-4 border rounded">
+          <div class="p-4 border rounded h-100">
             <div class="feature-icon mb-3">🎤</div>
             <h5>Ponencias Expertas</h5>
             <p>Conferencias de líderes de la industria tecnológica.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="p-4 border rounded">
+          <div class="p-4 border rounded h-100">
             <div class="feature-icon mb-3">🤝</div>
             <h5>Networking</h5>
             <p>Conecta con profesionales y amplía tu red.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="p-4 border rounded">
+          <div class="p-4 border rounded h-100">
             <div class="feature-icon mb-3">💡</div>
             <h5>Talleres Prácticos</h5>
             <p>Sesiones interactivas para desarrollar habilidades.</p>
@@ -85,7 +106,7 @@
   <!-- Agenda -->
   <section id="agenda" class="py-5 bg-light">
     <div class="container">
-      <h2 class="text-center mb-4">Agenda</h2>
+      <h2 class="text-center mb-4" style="color: var(--bs-secondary)">Agenda</h2>
       <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Registración
@@ -111,8 +132,24 @@
     </div>
   </section>
 
+  <!-- Speakers -->
+  <section id="speakers" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4" style="color: var(--bs-secondary)">Ponentes</h2>
+      <div class="row g-4">
+        <!-- Ejemplo de speaker -->
+        <div class="col-md-3 text-center">
+          <img src="assets/speaker1.jpg" class="rounded-circle mb-2" alt="Speaker 1" width="120">
+          <h6 class="fw-bold">Dr. Ana Gómez</h6>
+          <small>Experta en IA</small>
+        </div>
+        <!-- Repite para más -->
+      </div>
+    </div>
+  </section>
+
   <!-- Contact/Registration -->
-  <section id="register" class="py-5">
+  <section id="register" class="py-5 bg-secondary text-white">
     <div class="container">
       <h2 class="text-center mb-4">Regístrate</h2>
       <form class="mx-auto" style="max-width: 500px;">
@@ -130,12 +167,13 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-light py-4">
+  <footer class="footer py-4">
     <div class="container text-center">
-      <p class="mb-1">© 2025 Coecys</p>
+      <img src="assets/logo.png" alt="Logo COECYS" height="40">
+      <p class="mb-1 mt-2">© 2025 COECYS</p>
       <small>Síguenos en
-        <a href="#" class="text-decoration-none text-light mx-1">Twitter</a>|
-        <a href="#" class="text-decoration-none text-light mx-1">LinkedIn</a>
+        <a href="#" class="text-decoration-none text-white mx-1">Twitter</a>|  
+        <a href="#" class="text-decoration-none text-white mx-1">LinkedIn</a>
       </small>
     </div>
   </footer>
@@ -144,3 +182,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
