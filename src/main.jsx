@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import "./index.css";         // aquí importas tu CSS con las directivas @tailwind
-
-import { ThemeProvider } from "@material-tailwind/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ThemeProvider>
-    <App />
-  </ThemeProvider>
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );

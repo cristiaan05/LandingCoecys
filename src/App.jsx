@@ -1,14 +1,34 @@
-import { Button, Typography } from "@material-tailwind/react";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home/Home";
+import Sobre from "./pages/SobreCongreso/Sobre";
+import Program from "./pages/Programa/Programa";
+import Patrocinadores from "./pages/Patrocinadores/Patrocinadores";
+import Participar from "./pages/Patrocinadores/Participar";
+import Galeria from "./pages/Galeria";
+import Registro from "./pages/Registro";
+import Contacto from "./pages/Contacto";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-600 to-indigo-700 flex items-center justify-center">
-      <div className="p-8 bg-white rounded-lg shadow-lg text-center">
-        <Typography variant="h4" className="mb-4 text-blue-900">
-          ¡Tailwind con Vite está listo!  
-        </Typography>
-        <Button color="blue">Empezar</Button>
-      </div>
-    </div>
+    <>
+      <Navbar />
+      <main className="pt-0">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/programa" element={<Program />} />
+          <Route path="/patrocinadores" element={<Patrocinadores />} />
+           <Route path="/participar" element={<Participar />} />
+           <Route path="/galeria" element={<Galeria />} />
+           <Route path="/registro" element={<Registro />} />
+           <Route path="/contacto" element={<Contacto />} />
+          {/* Más rutas: /programa, /patrocinadores, /registro, etc. */}
+        </Routes>
+      </main>
+      <Footer/>
+    </>
   );
 }

@@ -1,7 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-import materialTailwind from "@material-tailwind/react/utils/withMT";
+// tailwind.config.js
+const materialTailwind = require("@material-tailwind/react/utils/withMT");
 
-export default materialTailwind({
+module.exports = materialTailwind({
   content: [
     "./index.html",
     "./src/**/*.{js,jsx}"
@@ -9,5 +9,9 @@ export default materialTailwind({
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    // … otros plugins
+  ],
+
 });
