@@ -6,22 +6,22 @@ const socials = [
   {
     name: "Instagram",
     href: "https://instagram.com/coecys",
-    icon: "../assets/instagram.svg",
+    icon: "/instagram.svg",
   },
   {
     name: "Facebook",
     href: "https://facebook.com/coecys.usac",
-    icon: "../assets/facebook.svg",
+    icon: "/facebook.svg",
   },
   {
     name: "TikTok",
     href: "https://tiktok.com/@coecys",
-    icon: "../assets/tiktok.svg",
+    icon: "/tiktok.svg",
   },
   {
     name: "LinkedIn",
     href: "https://linkedin.com/company/coecys",
-    icon: "../assets/linkedin.svg",
+    icon: "/linkedin.svg",
   },
 ];
 
