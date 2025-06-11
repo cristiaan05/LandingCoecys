@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo + título con Link */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/LogoSinFondo.png" alt="Coecys 2025" className="w-8 h-8" />
+            <img src="/isologo.png" alt="Coecys 2025" className="w-8 h-8" />
             <span className="text-white text-2xl font-extrabold">COECYS 2025</span>
           </Link>
 
