@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Sobre() {
   return (
-    <section id="sobre" className="py-16 bg-gray-50">
+    <section id="sobre" className="mt-20 py-16 bg-gray-50">
       <div className="container mx-auto px-6 lg:px-0 max-w-4xl space-y-12">
         {/* Quiénes somos */}
         <div>

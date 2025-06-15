@@ -14,21 +14,25 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <>
-      <Navbar />
-      <main className="pt-0">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/programa" element={<Program />} />
-          <Route path="/patrocinadores" element={<Patrocinadores />} />
-           <Route path="/participar" element={<Participar />} />
-           <Route path="/galeria" element={<Galeria />} />
-           <Route path="/registro" element={<Registro />} />
-           <Route path="/contacto" element={<Contacto />} />
-          {/* Más rutas: /programa, /patrocinadores, /registro, etc. */}
-        </Routes>
-      </main>
-      <Footer/>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+
+        <main className="flex-1 pt-0">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/programa" element={<Program />} />
+            <Route path="/patrocinadores" element={<Patrocinadores />} />
+            <Route path="/participar" element={<Participar />} />
+            <Route path="/galeria" element={<Galeria />} />
+            <Route path="/registro" element={<Registro />} />
+            <Route path="/contacto" element={<Contacto />} />
+           
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </>
   );
 }

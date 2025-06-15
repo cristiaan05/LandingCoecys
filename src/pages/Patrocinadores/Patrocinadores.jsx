@@ -22,7 +22,7 @@ const categories = [
 
 export default function Patrocinadores() {
   return (
-    <section id="patrocinadores" className="py-16 bg-white">
+    <section id="patrocinadores" className="mt-20 py-16 bg-white">
       <div className="container mx-auto px-6 lg:px-0 max-w-4xl text-center">
 
         <h1 className="text-3xl font-bold mb-8">Patrocinadores</h1>

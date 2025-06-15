@@ -1,5 +1,5 @@
 // src/pages/Contact.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Mapea cada red a su icono y URL
 const socials = [
@@ -40,93 +40,141 @@ export default function Contacto() {
     setSent(true);
   };
 
+  useEffect(() => {
+    //cambio el color del body
+    document.body.style.backgroundColor = "#e7e4e4"; // Cambia el color de fondo del body
+    return () => {
+      document.body.style.backgroundColor = ""; // Limpia el color al desmontar
+    };
+  }
+  , []);
+
   return (
-    <section id="contacto" className="py-16 bg-white">
-      <div className="container mx-auto px-6 lg:px-0 max-w-md space-y-8">
-        <h1 className="text-3xl font-bold text-center">Contacto</h1>
-        <p className="text-center text-gray-700">
-          ¿Tienes dudas o deseas comunicarte con el equipo organizador?
-        </p>
-
-        {/* Correo oficial */}
-        <div className="text-center">
-          <a
-            href="mailto:coecys2025@ejemplo.com"
-            className="text-blue-600 hover:underline font-medium"
-          >
-            coecys@ingenieria.usac.edu.gt
-          </a>
-        </div>
-
-        {/* Redes sociales */}
-        <div className="flex justify-center space-x-6">
-          {socials.map(({ name, href, icon }) => (
-            <a
-              key={name}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-8 h-8"
-            >
-              <img
-                src={icon}
-                alt={name}
-                className="w-full h-full object-contain"
-              />
-            </a>
-          ))}
-        </div>
-
-        {/* Formulario */}
-        {!sent ? (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-gray-700 mb-1">Nombre</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
+    <section id="contacto" className="mt-20 py-16">
+      <div className="container mx-auto px-4">
+        <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+          <div className="p-8 md:p-10">
+            <div className="text-center mb-10">
+              <h1 className="text-3xl font-bold text-[#002E56]">Contáctanos</h1>
+              <p className="mt-2 text-gray-600">
+                ¿Tienes dudas o deseas comunicarte con el equipo organizador?
+              </p>
             </div>
-            <div>
-              <label className="block text-gray-700 mb-1">Correo electrónico</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Información de contacto */}
+              <div className="space-y-6">
+                <div className="bg-[#002E56]/5 p-6 rounded-lg">
+                  <h2 className="font-medium text-[#002E56] mb-3">Correo oficial</h2>
+                  <a
+                    href="mailto:coecys2025@ejemplo.com"
+                    className="text-[#002E56] hover:text-[#FE803E] font-medium transition-colors"
+                  >
+                    coecys@ingenieria.usac.edu.gt
+                  </a>
+                </div>
+
+                <div className="bg-[#002E56]/5 p-6 rounded-lg">
+                  <h2 className="font-medium text-[#002E56] mb-3">Síguenos</h2>
+                  <div className="flex justify-center space-x-5">
+                    {socials.map(({ name, href, icon }) => (
+                      <a
+                        key={name}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-[#002E56] hover:text-white transition-all duration-300"
+                        title={name}
+                      >
+                        <img
+                          src={icon}
+                          alt={name}
+                          className="w-5 h-5 object-contain"
+                        />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Formulario */}
+              <div>
+                {!sent ? (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <label className="block text-sm font-medium text-[#002E56] mb-1">
+                        Nombre completo
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002E56] focus:border-transparent transition"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#002E56] mb-1">
+                        Correo electrónico
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002E56] focus:border-transparent transition"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#002E56] mb-1">
+                        Mensaje
+                      </label>
+                      <textarea
+                        name="message"
+                        value={form.message}
+                        onChange={handleChange}
+                        rows="4"
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002E56] focus:border-transparent transition"
+                      ></textarea>
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full bg-[#002E56] hover:bg-[#001F3D] text-white font-medium py-3 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.01]"
+                    >
+                      Enviar mensaje
+                    </button>
+                  </form>
+                ) : (
+                  <div className="text-center p-6 bg-green-50 border border-green-200 rounded-lg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-12 w-12 mx-auto text-green-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <h3 className="mt-3 text-lg font-semibold text-green-700">
+                      ¡Mensaje enviado con éxito!
+                    </h3>
+                    <p className="mt-1 text-sm text-green-600">
+                      Nos pondremos en contacto contigo pronto.
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
-            <div>
-              <label className="block text-gray-700 mb-1">Mensaje</label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                rows="4"
-                required
-                className="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-400 text-white font-medium py-2 rounded transition"
-            >
-              Enviar
-            </button>
-          </form>
-        ) : (
-          <div className="text-center space-y-4">
-            <p className="text-green-600 font-semibold">
-              ¡Tu mensaje ha sido enviado exitosamente!
-            </p>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );
