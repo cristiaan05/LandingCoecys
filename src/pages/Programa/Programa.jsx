@@ -30,7 +30,7 @@ export default function Program() {
   const current = agenda.find((d) => d.day === day);
 
   return (
-    <div className="bg-white">
+    <div className="mt-20 bg-white">
       <section className="py-16 px-6 lg:px-0 max-w-5xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Programa del Evento</h1>
 

@@ -43,7 +43,7 @@ const benefits = [
 
 export default function Participar() {
   return (
-    <section id="participar" className="py-16 bg-gray-50">
+    <section id="participar" className="mt-20 py-16 bg-gray-50">
       <div className="container mx-auto px-6 lg:px-0 max-w-4xl text-center space-y-12">
 
         <h1 className="text-3xl font-bold">¿Cómo Participar?</h1>

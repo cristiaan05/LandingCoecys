@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   return (
@@ -26,12 +27,12 @@ export default function Banner() {
         <p className="text-base md:text-lg mb-12 text-gray-300">
           El congreso estudiantil más innovador de Guatemala. Conecta con el futuro tecnológico.
         </p>
-        <a
-          href="#registro"
+        <Link
+          to={"/registro"}
           className="inline-block bg-blue-500 hover:bg-blue-400 text-white font-medium py-3 px-8 rounded-full transition"
         >
           Registrarme
-        </a>
+        </Link>
       </div>
     </header>
   );

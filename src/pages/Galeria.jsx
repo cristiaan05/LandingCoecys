@@ -28,7 +28,7 @@ export default function Galeria() {
     const [activeYear, setActiveYear] = useState(years[0]);
 
     return (
-        <section id="galeria" className="py-16 bg-white">
+        <section id="galeria" className="mt-20 py-16 bg-white">
             <div className="container mx-auto px-6 lg:px-0 max-w-4xl text-center space-y-8">
                 <h1 className="text-3xl font-bold">Galería</h1>
                 <p className="text-gray-600">Fotografías de congresos anteriores</p>
