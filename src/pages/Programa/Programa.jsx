@@ -1,6 +1,7 @@
 // src/pages/Program.jsx
 import React, { useState, useEffect } from "react";
 import placeholderImage from "../../../public/congreso-pasado.jpg"; // Pon aquí tu imagen real
+import Proximamente from "../../components/Proximamente";
 
 const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 
@@ -32,10 +33,18 @@ export default function Program() {
   return (
     <div className="mt-20 bg-white">
       <section className="py-16 px-6 lg:px-0 max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Programa del Evento</h1>
+
+   {/* ---------------------------- Seccion Cronograma -------------------------- */}
+
+
+
+        <Proximamente />
+        
+        {/* <h1 className="text-3xl font-bold mb-6">Programa del Evento</h1> */}
 
         {/* Tabs de días */}
-        <div className="flex space-x-2 mb-8 overflow-x-auto">
+        
+        {/* <div className="flex space-x-2 mb-8 overflow-x-auto">
           {days.map((d) => (
             <button
               key={d}
@@ -49,10 +58,11 @@ export default function Program() {
               {d}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* Agenda día seleccionado */}
-        <div className="space-y-4 mb-12">
+
+        {/* <div className="space-y-4 mb-12">
           {current?.sessions.map((s, i) => (
             <div
               key={i}
@@ -65,7 +75,10 @@ export default function Program() {
               <p className="mt-1">{s.topic}</p>
             </div>
           ))}
-        </div>
+        </div> */}
+
+
+        {/* ---------------------- Seccion Cronograma ---------------------------- */}
 
         {/* Sección Ponencias */}
         <section className="mb-16">
