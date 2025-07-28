@@ -45,7 +45,6 @@ export default function Participar() {
   return (
     <section id="participar" className="mt-20 py-16 bg-gray-50">
       <div className="container mx-auto px-6 lg:px-0 max-w-4xl text-center space-y-12">
-
         <h1 className="text-3xl font-bold">¿Cómo Participar?</h1>
 
         {/* Tabla comparativa */}
@@ -55,7 +54,9 @@ export default function Participar() {
               <tr>
                 <th className="px-4 py-3 text-left">Paquetes de patrocinio</th>
                 {sponsorshipLevels.map((level) => (
-                  <th key={level} className="px-4 py-3">{level}</th>
+                  <th key={level} className="px-4 py-3">
+                    {level}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -79,11 +80,16 @@ export default function Participar() {
         </div>
 
         {/* Botón Solicitar brochure */}
-        <Link to="/contacto">
-          <button className="bg-orange-500 hover:bg-orange-400 text-white font-medium py-3 px-8 rounded-full transition">
-            Solicitar brochure
+        <a
+          href="/assets/DetallesPatrocinio.pdf"
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="mt-8 bg-orange-500 hover:bg-orange-400 text-white font-medium py-3 px-8 rounded-full transition">
+            Descargar brochure
           </button>
-        </Link>
+        </a>
 
         {/* Conferencista */}
         <div className="space-y-4">
@@ -91,8 +97,8 @@ export default function Participar() {
           <p className="text-gray-700">
             Comparte tu experiencia y aplica para ser ponente en COECYS 2025.
           </p>
-          <Link to="/postular">
-            <button className="bg-orange-500 hover:bg-orange-400 text-white font-medium py-2 px-6 rounded-full transition">
+          <Link to="/registro">
+            <button className="mt-8 bg-orange-500 hover:bg-orange-400 text-white font-medium py-2 px-6 rounded-full transition">
               Postula como conferencista
             </button>
           </Link>
@@ -105,7 +111,7 @@ export default function Participar() {
             Completa el formulario de registro para asegurar tu participación.
           </p>
           <Link to="/registro">
-            <button className="bg-orange-500 hover:bg-orange-400 text-white font-medium py-2 px-6 rounded-full transition">
+            <button className="mt-8 bg-orange-500 hover:bg-orange-400 text-white font-medium py-2 px-6 rounded-full transition">
               Ir a registro
             </button>
           </Link>

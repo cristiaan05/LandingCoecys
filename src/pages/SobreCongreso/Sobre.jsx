@@ -44,15 +44,15 @@ export default function Sobre() {
           </p>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
             <li>
-              <span className="font-semibold">IA y Machine Learning:</span>  
+              <span className="font-semibold">IA y Machine Learning: </span>  
               Modelado predictivo, Deep Learning y aplicaciones prácticas.
             </li>
             <li>
-              <span className="font-semibold">Ciberseguridad:</span>  
+              <span className="font-semibold">Ciberseguridad: </span>  
               Estrategias de defensa, criptografía y gestión de riesgos.
             </li>
             <li>
-              <span className="font-semibold">Análisis de Datos:</span>  
+              <span className="font-semibold">Análisis de Datos: </span>  
               Big Data, visualización y toma de decisiones basada en datos.
             </li>
           </ul>
