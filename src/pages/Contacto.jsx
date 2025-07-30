@@ -1,7 +1,7 @@
 // src/pages/Contact.jsx
 import React, { useEffect, useState } from "react";
+import emailjs from "emailjs-com";
 
-// Mapea cada red a su icono y URL
 const socials = [
   {
     name: "Instagram",
@@ -29,25 +29,51 @@ export default function Contacto() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(f => ({ ...f, [name]: value }));
+    setForm((f) => ({ ...f, [name]: value }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí podrías enviar los datos a tu API
-    setSent(true);
+
+    // Reemplaza estos valores con los de tu cuenta EmailJS
+    const SERVICE_ID = "service_vdihtot";
+    const TEMPLATE_ID = "template_unzci1o";
+    const USER_ID = "IqdXjL7wFz4RzNqny";
+
+    emailjs
+      .send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          time: new Date().toLocaleString(), // o cualquier formato que desees
+        },
+        USER_ID
+      )
+      .then(() => {
+        setSent(true);
+      })
+      .catch((err) => {
+        console.error("Error al enviar el mensaje:", err);
+        alert("Ocurrió un error al enviar el mensaje. Intenta de nuevo.");
+      });
+  };
+
+  const handleReset = () => {
+    setForm({ name: "", email: "", message: "" });
+    setSent(false);
   };
 
   useEffect(() => {
-    //cambio el color del body
-    document.body.style.backgroundColor = "#e7e4e4"; // Cambia el color de fondo del body
+    document.body.style.backgroundColor = "#e7e4e4";
     return () => {
-      document.body.style.backgroundColor = ""; // Limpia el color al desmontar
+      document.body.style.backgroundColor = "";
     };
-  }
-  , []);
+  }, []);
 
   return (
     <section id="contacto" className="mt-20 py-16">
@@ -67,7 +93,7 @@ export default function Contacto() {
                 <div className="bg-[#002E56]/5 p-6 rounded-lg">
                   <h2 className="font-medium text-[#002E56] mb-3">Correo oficial</h2>
                   <a
-                    href="mailto:coecys2025@ejemplo.com"
+                    href="mailto:coecys@ingenieria.usac.edu.gt"
                     className="text-[#002E56] hover:text-[#FE803E] font-medium transition-colors"
                   >
                     coecys@ingenieria.usac.edu.gt
@@ -97,7 +123,7 @@ export default function Contacto() {
                 </div>
               </div>
 
-              {/* Formulario */}
+              {/* Formulario o mensaje enviado */}
               <div>
                 {!sent ? (
                   <form onSubmit={handleSubmit} className="space-y-5">
@@ -148,7 +174,7 @@ export default function Contacto() {
                     </button>
                   </form>
                 ) : (
-                  <div className="text-center p-6 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="text-center p-6 bg-green-50 border border-green-200 rounded-lg space-y-4">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-12 w-12 mx-auto text-green-500"
@@ -163,12 +189,18 @@ export default function Contacto() {
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <h3 className="mt-3 text-lg font-semibold text-green-700">
+                    <h3 className="text-lg font-semibold text-green-700">
                       ¡Mensaje enviado con éxito!
                     </h3>
-                    <p className="mt-1 text-sm text-green-600">
+                    <p className="text-sm text-green-600">
                       Nos pondremos en contacto contigo pronto.
                     </p>
+                    <button
+                      onClick={handleReset}
+                      className="mt-2 bg-[#FE803E] hover:bg-[#E67035] text-white font-medium py-2 px-4 rounded-lg transition duration-200"
+                    >
+                      Enviar otra consulta
+                    </button>
                   </div>
                 )}
               </div>

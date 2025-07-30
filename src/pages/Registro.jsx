@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import emailjs from "emailjs-com";
 dayjs.extend(utc);
 
-const participationOptions = ["Asistente", "Taller", "Ponente", "Otros"];
+const participationOptions = ["Asistente", "Taller", "Conferencista"];
 
 export default function Registro() {
   const [form, setForm] = useState({
@@ -23,19 +24,37 @@ export default function Registro() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí podrías enviar form a tu API...
-    setSubmitted(true);
+
+    emailjs
+      .send(
+        "service_vdihtot",    // tu Service ID de EmailJS
+        "template_q51kkjw",   // tu Template ID de EmailJS
+        {
+          name: form.name,
+          university: form.university,
+          career: form.career,
+          email: form.email,
+          type: form.type,
+        },
+        "IqdXjL7wFz4RzNqny"        // tu User ID público de EmailJS
+      )
+      .then(() => {
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        console.log('err', err)
+        console.error("Error al enviar correo:", err);
+        alert("Ocurrió un error al enviar el registro. Intenta de nuevo.");
+      });
   };
 
   useEffect(() => {
-    //cambio el color del body
-    document.body.style.backgroundColor = "#e7e4e4"; // Cambia el color de fondo del body
+    document.body.style.backgroundColor = "#e7e4e4";
     return () => {
-      document.body.style.backgroundColor = ""; // Limpia el color al desmontar
+      document.body.style.backgroundColor = "";
     };
   }, []);
 
-  // Genera un archivo .ics para el evento de inicio
   const downloadICS = () => {
     const start =
       dayjs("2025-09-22T09:00:00").utc().format("YYYYMMDDTHHmmss") + "Z";
@@ -69,10 +88,7 @@ END:VCALENDAR`.trim();
   };
 
   return (
-    <section
-      id="registro"
-      className="mt-20 py-16"
-    >
+    <section id="registro" className="mt-20 py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-md mx-auto">
           <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
@@ -85,6 +101,7 @@ END:VCALENDAR`.trim();
 
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Nombre completo */}
                 <div>
                   <label className="block text-sm font-medium text-[#002E56] mb-1">
                     Nombre completo<span className="text-[#FE803E]">*</span>
@@ -99,6 +116,7 @@ END:VCALENDAR`.trim();
                   />
                 </div>
 
+                {/* Universidad */}
                 <div>
                   <label className="block text-sm font-medium text-[#002E56] mb-1">
                     Universidad
@@ -112,6 +130,7 @@ END:VCALENDAR`.trim();
                   />
                 </div>
 
+                {/* Carrera */}
                 <div>
                   <label className="block text-sm font-medium text-[#002E56] mb-1">
                     Carrera
@@ -125,6 +144,7 @@ END:VCALENDAR`.trim();
                   />
                 </div>
 
+                {/* Correo electrónico */}
                 <div>
                   <label className="block text-sm font-medium text-[#002E56] mb-1">
                     Correo electrónico<span className="text-[#FE803E]">*</span>
@@ -139,6 +159,7 @@ END:VCALENDAR`.trim();
                   />
                 </div>
 
+                {/* Tipo de participación */}
                 <div className="relative">
                   <label className="block text-sm font-medium text-[#002E56] mb-1">
                     Tipo de participación
@@ -166,6 +187,7 @@ END:VCALENDAR`.trim();
                   </div>
                 </div>
 
+                {/* Botón enviar */}
                 <button
                   type="submit"
                   className="w-full bg-[#002E56] hover:bg-[#001F3D] text-white font-medium py-3 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.01] mt-6"

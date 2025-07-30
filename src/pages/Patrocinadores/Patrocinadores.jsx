@@ -4,21 +4,44 @@ import { Link } from "react-router-dom";
 
 // Datos de ejemplo
 const platinumSponsors = [
-  { name: "BlueWave", color: "bg-blue-300" },
-  { name: "ACME", color: "bg-gray-400" },
-  { name: "Hexagon", color: "bg-gray-500" },
+  { name: "", color: "bg-blue-300" },
+  { name: "", color: "bg-gray-400" },
+  { name: "", color: "bg-gray-500" },
 ];
 
+// Otros patrocinadores dummy
 const otherSponsors = Array.from({ length: 12 }).map((_, i) => ({
   id: i,
   color: `bg-gray-${200 + (i % 4) * 100}`,
 }));
 
-const categories = [
-  { title: "Oro", items: otherSponsors.slice(0, 3) },
-  { title: "Plata", items: otherSponsors.slice(3, 6) },
-  { title: "Básico", items: otherSponsors.slice(6, 9) },
+// Sección Oro
+const goldSponsors = otherSponsors.slice(0, 3);
+// Sección Plata con SISAP añadido
+const silverSponsors = [
+  {
+    id: "sisap",
+    logo:
+      "https://i.ibb.co/4n5YDwSb/Imagen-de-Whats-App-2025-07-25-a-las-14-31-52-eab66292.jpg",
+    name: "SISAP",
+  },
 ];
+// Sección Básico
+const basicSponsors = otherSponsors.slice(6, 9);
+
+const categories = [
+  { title: "Oro", items: goldSponsors },
+  { title: "Plata", items: silverSponsors },
+  // { title: "Básico", items: basicSponsors },
+];
+
+// Mapa de tamaños por categoría\
+const sizeMap = {
+  Platino: "w-32 h-32",
+  Oro: "w-20 h-20",
+  Plata: "w-24 h-24",
+  Básico: "w-16 h-16",
+};
 
 export default function Patrocinadores() {
   return (
@@ -30,43 +53,40 @@ export default function Patrocinadores() {
         {/* Platino */}
         <div className="mb-12">
           <h2 className="text-xl font-semibold mb-4">Patrocinadores Platino</h2>
-          <div className="flex justify-center items-center space-x-8">
+          <div className="flex justify-center items-center space-x-12">
             {platinumSponsors.map((s) => (
               <div
                 key={s.name}
-                className={`w-24 h-24 ${s.color} rounded flex items-center justify-center`}
+                className={`${sizeMap.Platino} ${s.color} rounded flex items-center justify-center shadow-lg`}
               >
-                <span className="text-gray-700 font-medium">{s.name}</span>
+                <span className="text-gray-700 font-medium text-lg">{s.name}</span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Otros patrocinadores (grid 4x3) */}
-        <div className="mb-12">
-          <h2 className="text-xl font-semibold mb-4">Otros patrocinadores</h2>
-          <div className="grid grid-cols-4 gap-6 justify-items-center">
-            {otherSponsors.map((s) => (
-              <div
-                key={s.id}
-                className={`w-16 h-16 ${s.color} rounded-full`}
-              />
             ))}
           </div>
         </div>
 
         {/* Categorías */}
         <div className="mb-12">
-          <div className="flex justify-center space-x-12">
+          <div className="flex flex-col items-center space-y-8">
             {categories.map((cat) => (
-              <div key={cat.title} className="text-center">
-                <h3 className="font-semibold mb-2">{cat.title}</h3>
-                <div className="grid grid-cols-3 gap-4">
+              <div key={cat.title} className="w-full">
+                <h3 className="font-semibold mb-4 text-lg">{cat.title}</h3>
+                <div className="flex justify-center space-x-8">
                   {cat.items.map((s) => (
-                    <div
-                      key={s.id}
-                      className={`w-12 h-12 ${s.color} rounded`}
-                    />
+                    <div key={s.id} className="flex flex-col items-center">
+                      {s.logo ? (
+                        <img
+                          src={s.logo}
+                          alt={s.name}
+                          className={`${sizeMap[cat.title]} object-contain rounded shadow-md bg-white p-2`}
+                        />
+                      ) : (
+                        <div
+                          className={`${sizeMap[cat.title]} ${s.color} rounded shadow-md`}
+                        />
+                      )}
+                      <span className="mt-2 text-sm font-medium">{s.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -76,15 +96,14 @@ export default function Patrocinadores() {
 
         {/* Call to Action */}
         <div>
-          <p className="mb-4 text-gray-700">
-            ¿Quieres ser patrocinador?
-          </p>
+          <p className="mb-4 text-gray-700">¿Quieres ser patrocinador?</p>
           <Link to="/participar">
             <button className="bg-blue-500 hover:bg-blue-400 text-white px-6 py-2 rounded-full transition">
               ¿Cómo participar?
             </button>
           </Link>
         </div>
+
       </div>
     </section>
   );
