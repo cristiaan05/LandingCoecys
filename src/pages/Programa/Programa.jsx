@@ -100,7 +100,8 @@ export default function Program() {
         </section>
 
         {/* Sección Talleres prácticos */}
-        <section className="mb-16 bg-gray-50 p-6 rounded">
+        
+        {/* <section className="mb-16 bg-gray-50 p-6 rounded">
           <h2 className="text-2xl font-bold mb-4">Talleres Prácticos</h2>
           <ul className="space-y-2 text-gray-700">
             <li>
@@ -116,10 +117,11 @@ export default function Program() {
               $10 USD.
             </li>
           </ul>
-        </section>
+        </section> */}
 
         {/* Sección Networking */}
-        <section className="mb-16">
+
+        {/* <section className="mb-16">
           <h2 className="text-2xl font-bold mb-4">Networking</h2>
           <p className="mb-2 text-gray-700">
             Espacios programados para conectar con empresas y colegas:
@@ -129,8 +131,10 @@ export default function Program() {
             <li>12:00 – 12:30: Speed Networking</li>
             <li>15:00 – 15:30: Demostraciones en vivo</li>
           </ul>
-        </section>
+        </section> */}
+
       </section>
+      
     </div>
   );
 }
